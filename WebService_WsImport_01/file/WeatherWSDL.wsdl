@@ -1,582 +1,543 @@
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://WebXml.com.cn/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://WebXml.com.cn/">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<a href="http://www.webxml.com.cn/" target="_blank">WebXml.com.cn</a> <strong>2400¶à¸ö³ÇÊĞÌìÆøÔ¤±¨Web·şÎñ</strong>£¬°üº¬2300¸öÒÔÉÏÖĞ¹ú³ÇÊĞºÍ100¸öÒÔÉÏ¹úÍâ³ÇÊĞÌìÆøÔ¤±¨Êı¾İ¡£Êı¾İÃ¿2.5Ğ¡Ê±×óÓÒ×Ô¶¯¸üĞÂÒ»´Î£¬×¼È·¿É¿¿¡£<br />Ê¹ÓÃ±¾Õ¾ WEB ·şÎñÇë×¢Ã÷»òÁ´½Ó±¾Õ¾£º<a href="http://www.webxml.com.cn/" target="_blank">http://www.webxml.com.cn/</a> ¸ĞĞ»´ó¼ÒµÄÖ§³Ö£¡<br /><br /><img alt="PDF" title="PDF file" src="http://www.webxml.com.cn/images/icon/pdf.gif" style="vertical-align: middle;" /> <a href="http://www.webxml.com.cn/files/WeatherWsHelp.pdf" target="_blank">½Ó¿Ú°ïÖúÎÄµµ</a> &nbsp;&nbsp;&nbsp; <img alt="ZIP" title="ZIP file" src="http://www.webxml.com.cn/images/icon/zip.gif" style="vertical-align: middle;" /> <a href="http://www.webxml.com.cn/files/about_city.zip">²¿·Ö³ÇÊĞ½éÉÜºÍÆøºò±³¾°</a> &nbsp;&nbsp;&nbsp; <img alt="ZIP" title="ZIP file" src="http://www.webxml.com.cn/images/icon/zip.gif" style="vertical-align: middle;" /> <a href="http://www.webxml.com.cn/files/city_photo.zip">²¿·Ö³ÇÊĞÍ¼Æ¬</a> &nbsp;&nbsp;&nbsp; <img alt="HTML" title="HTML file" src="http://www.webxml.com.cn/images/icon/html.gif" style="vertical-align: middle;" /> <a href="http://www.webxml.com.cn/zh_cn/weather_icon.aspx" target="_blank">ÌìÆøÏÖÏóºÍÍ¼Àı</a><br />&nbsp;
-</wsdl:documentation>
-<wsdl:types>
-<s:schema elementFormDefault="qualified" targetNamespace="http://WebXml.com.cn/">
-<s:element name="getRegionDataset">
-<s:complexType/>
-</s:element>
-<s:element name="getRegionDatasetResponse">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="getRegionDatasetResult">
-<s:complexType>
-<s:sequence>
-<s:any minOccurs="2" maxOccurs="2"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="getRegionProvince">
-<s:complexType/>
-</s:element>
-<s:element name="getRegionProvinceResponse">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="getRegionProvinceResult" type="tns:ArrayOfString"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:complexType name="ArrayOfString">
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string"/>
-</s:sequence>
-</s:complexType>
-<s:element name="getRegionCountry">
-<s:complexType/>
-</s:element>
-<s:element name="getRegionCountryResponse">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="getRegionCountryResult" type="tns:ArrayOfString"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="getSupportCityDataset">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="theRegionCode" type="s:string"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="getSupportCityDatasetResponse">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="getSupportCityDatasetResult">
-<s:complexType>
-<s:sequence>
-<s:any minOccurs="2" maxOccurs="2"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="getSupportCityString">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="theRegionCode" type="s:string"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="getSupportCityStringResponse">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="getSupportCityStringResult" type="tns:ArrayOfString"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="getWeather">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="theCityCode" type="s:string"/>
-<s:element minOccurs="0" maxOccurs="1" name="theUserID" type="s:string"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="getWeatherResponse">
-<s:complexType>
-<s:sequence>
-<s:element minOccurs="0" maxOccurs="1" name="getWeatherResult" type="tns:ArrayOfString"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="DataSet" nillable="true">
-<s:complexType>
-<s:sequence>
-<s:any minOccurs="2" maxOccurs="2"/>
-</s:sequence>
-</s:complexType>
-</s:element>
-<s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString"/>
-</s:schema>
-</wsdl:types>
-<wsdl:message name="getRegionDatasetSoapIn">
-<wsdl:part name="parameters" element="tns:getRegionDataset"/>
-</wsdl:message>
-<wsdl:message name="getRegionDatasetSoapOut">
-<wsdl:part name="parameters" element="tns:getRegionDatasetResponse"/>
-</wsdl:message>
-<wsdl:message name="getRegionProvinceSoapIn">
-<wsdl:part name="parameters" element="tns:getRegionProvince"/>
-</wsdl:message>
-<wsdl:message name="getRegionProvinceSoapOut">
-<wsdl:part name="parameters" element="tns:getRegionProvinceResponse"/>
-</wsdl:message>
-<wsdl:message name="getRegionCountrySoapIn">
-<wsdl:part name="parameters" element="tns:getRegionCountry"/>
-</wsdl:message>
-<wsdl:message name="getRegionCountrySoapOut">
-<wsdl:part name="parameters" element="tns:getRegionCountryResponse"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityDatasetSoapIn">
-<wsdl:part name="parameters" element="tns:getSupportCityDataset"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityDatasetSoapOut">
-<wsdl:part name="parameters" element="tns:getSupportCityDatasetResponse"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityStringSoapIn">
-<wsdl:part name="parameters" element="tns:getSupportCityString"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityStringSoapOut">
-<wsdl:part name="parameters" element="tns:getSupportCityStringResponse"/>
-</wsdl:message>
-<wsdl:message name="getWeatherSoapIn">
-<wsdl:part name="parameters" element="tns:getWeather"/>
-</wsdl:message>
-<wsdl:message name="getWeatherSoapOut">
-<wsdl:part name="parameters" element="tns:getWeatherResponse"/>
-</wsdl:message>
-<wsdl:message name="getRegionDatasetHttpGetIn"/>
-<wsdl:message name="getRegionDatasetHttpGetOut">
-<wsdl:part name="Body" element="tns:DataSet"/>
-</wsdl:message>
-<wsdl:message name="getRegionProvinceHttpGetIn"/>
-<wsdl:message name="getRegionProvinceHttpGetOut">
-<wsdl:part name="Body" element="tns:ArrayOfString"/>
-</wsdl:message>
-<wsdl:message name="getRegionCountryHttpGetIn"/>
-<wsdl:message name="getRegionCountryHttpGetOut">
-<wsdl:part name="Body" element="tns:ArrayOfString"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityDatasetHttpGetIn">
-<wsdl:part name="theRegionCode" type="s:string"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityDatasetHttpGetOut">
-<wsdl:part name="Body" element="tns:DataSet"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityStringHttpGetIn">
-<wsdl:part name="theRegionCode" type="s:string"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityStringHttpGetOut">
-<wsdl:part name="Body" element="tns:ArrayOfString"/>
-</wsdl:message>
-<wsdl:message name="getWeatherHttpGetIn">
-<wsdl:part name="theCityCode" type="s:string"/>
-<wsdl:part name="theUserID" type="s:string"/>
-</wsdl:message>
-<wsdl:message name="getWeatherHttpGetOut">
-<wsdl:part name="Body" element="tns:ArrayOfString"/>
-</wsdl:message>
-<wsdl:message name="getRegionDatasetHttpPostIn"/>
-<wsdl:message name="getRegionDatasetHttpPostOut">
-<wsdl:part name="Body" element="tns:DataSet"/>
-</wsdl:message>
-<wsdl:message name="getRegionProvinceHttpPostIn"/>
-<wsdl:message name="getRegionProvinceHttpPostOut">
-<wsdl:part name="Body" element="tns:ArrayOfString"/>
-</wsdl:message>
-<wsdl:message name="getRegionCountryHttpPostIn"/>
-<wsdl:message name="getRegionCountryHttpPostOut">
-<wsdl:part name="Body" element="tns:ArrayOfString"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityDatasetHttpPostIn">
-<wsdl:part name="theRegionCode" type="s:string"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityDatasetHttpPostOut">
-<wsdl:part name="Body" element="tns:DataSet"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityStringHttpPostIn">
-<wsdl:part name="theRegionCode" type="s:string"/>
-</wsdl:message>
-<wsdl:message name="getSupportCityStringHttpPostOut">
-<wsdl:part name="Body" element="tns:ArrayOfString"/>
-</wsdl:message>
-<wsdl:message name="getWeatherHttpPostIn">
-<wsdl:part name="theCityCode" type="s:string"/>
-<wsdl:part name="theUserID" type="s:string"/>
-</wsdl:message>
-<wsdl:message name="getWeatherHttpPostOut">
-<wsdl:part name="Body" element="tns:ArrayOfString"/>
-</wsdl:message>
-<wsdl:portType name="WeatherWSSoap">
-<wsdl:operation name="getRegionDataset">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖĞ¹úÊ¡·İ¡¢Ö±Ï½ÊĞ¡¢µØÇø£»¹ú¼ÒÃû³Æ£¨¹úÍâ£©ºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºDataSet¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionDatasetSoapIn"/>
-<wsdl:output message="tns:getRegionDatasetSoapOut"/>
-</wsdl:operation>
-<wsdl:operation name="getRegionProvince">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖĞ¹úÊ¡·İ¡¢Ö±Ï½ÊĞ¡¢µØÇøºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionProvinceSoapIn"/>
-<wsdl:output message="tns:getRegionProvinceSoapOut"/>
-</wsdl:operation>
-<wsdl:operation name="getRegionCountry">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃ¹úÍâ¹ú¼ÒÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionCountrySoapIn"/>
-<wsdl:output message="tns:getRegionCountrySoapOut"/>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityDataset">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖ§³ÖµÄ³ÇÊĞ/µØÇøÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºtheRegionCode = Ê¡ÊĞ¡¢¹ú¼ÒID»òÃû³Æ£¬·µ»ØÊı¾İ£ºDataSet¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getSupportCityDatasetSoapIn"/>
-<wsdl:output message="tns:getSupportCityDatasetSoapOut"/>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityString">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖ§³ÖµÄ³ÇÊĞ/µØÇøÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºtheRegionCode = Ê¡ÊĞ¡¢¹ú¼ÒID»òÃû³Æ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getSupportCityStringSoapIn"/>
-<wsdl:output message="tns:getSupportCityStringSoapOut"/>
-</wsdl:operation>
-<wsdl:operation name="getWeather">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÌìÆøÔ¤±¨Êı¾İ</h3><p>ÊäÈë²ÎÊı£º³ÇÊĞ/µØÇøID»òÃû³Æ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getWeatherSoapIn"/>
-<wsdl:output message="tns:getWeatherSoapOut"/>
-</wsdl:operation>
-</wsdl:portType>
-<wsdl:portType name="WeatherWSHttpGet">
-<wsdl:operation name="getRegionDataset">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖĞ¹úÊ¡·İ¡¢Ö±Ï½ÊĞ¡¢µØÇø£»¹ú¼ÒÃû³Æ£¨¹úÍâ£©ºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºDataSet¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionDatasetHttpGetIn"/>
-<wsdl:output message="tns:getRegionDatasetHttpGetOut"/>
-</wsdl:operation>
-<wsdl:operation name="getRegionProvince">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖĞ¹úÊ¡·İ¡¢Ö±Ï½ÊĞ¡¢µØÇøºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionProvinceHttpGetIn"/>
-<wsdl:output message="tns:getRegionProvinceHttpGetOut"/>
-</wsdl:operation>
-<wsdl:operation name="getRegionCountry">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃ¹úÍâ¹ú¼ÒÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionCountryHttpGetIn"/>
-<wsdl:output message="tns:getRegionCountryHttpGetOut"/>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityDataset">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖ§³ÖµÄ³ÇÊĞ/µØÇøÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºtheRegionCode = Ê¡ÊĞ¡¢¹ú¼ÒID»òÃû³Æ£¬·µ»ØÊı¾İ£ºDataSet¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getSupportCityDatasetHttpGetIn"/>
-<wsdl:output message="tns:getSupportCityDatasetHttpGetOut"/>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityString">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖ§³ÖµÄ³ÇÊĞ/µØÇøÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºtheRegionCode = Ê¡ÊĞ¡¢¹ú¼ÒID»òÃû³Æ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getSupportCityStringHttpGetIn"/>
-<wsdl:output message="tns:getSupportCityStringHttpGetOut"/>
-</wsdl:operation>
-<wsdl:operation name="getWeather">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÌìÆøÔ¤±¨Êı¾İ</h3><p>ÊäÈë²ÎÊı£º³ÇÊĞ/µØÇøID»òÃû³Æ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getWeatherHttpGetIn"/>
-<wsdl:output message="tns:getWeatherHttpGetOut"/>
-</wsdl:operation>
-</wsdl:portType>
-<wsdl:portType name="WeatherWSHttpPost">
-<wsdl:operation name="getRegionDataset">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖĞ¹úÊ¡·İ¡¢Ö±Ï½ÊĞ¡¢µØÇø£»¹ú¼ÒÃû³Æ£¨¹úÍâ£©ºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºDataSet¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionDatasetHttpPostIn"/>
-<wsdl:output message="tns:getRegionDatasetHttpPostOut"/>
-</wsdl:operation>
-<wsdl:operation name="getRegionProvince">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖĞ¹úÊ¡·İ¡¢Ö±Ï½ÊĞ¡¢µØÇøºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionProvinceHttpPostIn"/>
-<wsdl:output message="tns:getRegionProvinceHttpPostOut"/>
-</wsdl:operation>
-<wsdl:operation name="getRegionCountry">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃ¹úÍâ¹ú¼ÒÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºÎŞ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getRegionCountryHttpPostIn"/>
-<wsdl:output message="tns:getRegionCountryHttpPostOut"/>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityDataset">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖ§³ÖµÄ³ÇÊĞ/µØÇøÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºtheRegionCode = Ê¡ÊĞ¡¢¹ú¼ÒID»òÃû³Æ£¬·µ»ØÊı¾İ£ºDataSet¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getSupportCityDatasetHttpPostIn"/>
-<wsdl:output message="tns:getSupportCityDatasetHttpPostOut"/>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityString">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÖ§³ÖµÄ³ÇÊĞ/µØÇøÃû³ÆºÍÓëÖ®¶ÔÓ¦µÄID</h3><p>ÊäÈë²ÎÊı£ºtheRegionCode = Ê¡ÊĞ¡¢¹ú¼ÒID»òÃû³Æ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getSupportCityStringHttpPostIn"/>
-<wsdl:output message="tns:getSupportCityStringHttpPostOut"/>
-</wsdl:operation>
-<wsdl:operation name="getWeather">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<br /><h3>»ñµÃÌìÆøÔ¤±¨Êı¾İ</h3><p>ÊäÈë²ÎÊı£º³ÇÊĞ/µØÇøID»òÃû³Æ£¬·µ»ØÊı¾İ£ºÒ»Î¬×Ö·û´®Êı×é¡£</p><br />
-</wsdl:documentation>
-<wsdl:input message="tns:getWeatherHttpPostIn"/>
-<wsdl:output message="tns:getWeatherHttpPostOut"/>
-</wsdl:operation>
-</wsdl:portType>
-<wsdl:binding name="WeatherWSSoap" type="tns:WeatherWSSoap">
-<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
-<wsdl:operation name="getRegionDataset">
-<soap:operation soapAction="http://WebXml.com.cn/getRegionDataset" style="document"/>
-<wsdl:input>
-<soap:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getRegionProvince">
-<soap:operation soapAction="http://WebXml.com.cn/getRegionProvince" style="document"/>
-<wsdl:input>
-<soap:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getRegionCountry">
-<soap:operation soapAction="http://WebXml.com.cn/getRegionCountry" style="document"/>
-<wsdl:input>
-<soap:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityDataset">
-<soap:operation soapAction="http://WebXml.com.cn/getSupportCityDataset" style="document"/>
-<wsdl:input>
-<soap:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityString">
-<soap:operation soapAction="http://WebXml.com.cn/getSupportCityString" style="document"/>
-<wsdl:input>
-<soap:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getWeather">
-<soap:operation soapAction="http://WebXml.com.cn/getWeather" style="document"/>
-<wsdl:input>
-<soap:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-</wsdl:binding>
-<wsdl:binding name="WeatherWSSoap12" type="tns:WeatherWSSoap">
-<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
-<wsdl:operation name="getRegionDataset">
-<soap12:operation soapAction="http://WebXml.com.cn/getRegionDataset" style="document"/>
-<wsdl:input>
-<soap12:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap12:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getRegionProvince">
-<soap12:operation soapAction="http://WebXml.com.cn/getRegionProvince" style="document"/>
-<wsdl:input>
-<soap12:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap12:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getRegionCountry">
-<soap12:operation soapAction="http://WebXml.com.cn/getRegionCountry" style="document"/>
-<wsdl:input>
-<soap12:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap12:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityDataset">
-<soap12:operation soapAction="http://WebXml.com.cn/getSupportCityDataset" style="document"/>
-<wsdl:input>
-<soap12:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap12:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityString">
-<soap12:operation soapAction="http://WebXml.com.cn/getSupportCityString" style="document"/>
-<wsdl:input>
-<soap12:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap12:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getWeather">
-<soap12:operation soapAction="http://WebXml.com.cn/getWeather" style="document"/>
-<wsdl:input>
-<soap12:body use="literal"/>
-</wsdl:input>
-<wsdl:output>
-<soap12:body use="literal"/>
-</wsdl:output>
-</wsdl:operation>
-</wsdl:binding>
-<wsdl:binding name="WeatherWSHttpGet" type="tns:WeatherWSHttpGet">
-<http:binding verb="GET"/>
-<wsdl:operation name="getRegionDataset">
-<http:operation location="/getRegionDataset"/>
-<wsdl:input>
-<http:urlEncoded/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getRegionProvince">
-<http:operation location="/getRegionProvince"/>
-<wsdl:input>
-<http:urlEncoded/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getRegionCountry">
-<http:operation location="/getRegionCountry"/>
-<wsdl:input>
-<http:urlEncoded/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityDataset">
-<http:operation location="/getSupportCityDataset"/>
-<wsdl:input>
-<http:urlEncoded/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityString">
-<http:operation location="/getSupportCityString"/>
-<wsdl:input>
-<http:urlEncoded/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getWeather">
-<http:operation location="/getWeather"/>
-<wsdl:input>
-<http:urlEncoded/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-</wsdl:binding>
-<wsdl:binding name="WeatherWSHttpPost" type="tns:WeatherWSHttpPost">
-<http:binding verb="POST"/>
-<wsdl:operation name="getRegionDataset">
-<http:operation location="/getRegionDataset"/>
-<wsdl:input>
-<mime:content type="application/x-www-form-urlencoded"/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getRegionProvince">
-<http:operation location="/getRegionProvince"/>
-<wsdl:input>
-<mime:content type="application/x-www-form-urlencoded"/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getRegionCountry">
-<http:operation location="/getRegionCountry"/>
-<wsdl:input>
-<mime:content type="application/x-www-form-urlencoded"/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityDataset">
-<http:operation location="/getSupportCityDataset"/>
-<wsdl:input>
-<mime:content type="application/x-www-form-urlencoded"/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getSupportCityString">
-<http:operation location="/getSupportCityString"/>
-<wsdl:input>
-<mime:content type="application/x-www-form-urlencoded"/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-<wsdl:operation name="getWeather">
-<http:operation location="/getWeather"/>
-<wsdl:input>
-<mime:content type="application/x-www-form-urlencoded"/>
-</wsdl:input>
-<wsdl:output>
-<mime:mimeXml part="Body"/>
-</wsdl:output>
-</wsdl:operation>
-</wsdl:binding>
-<wsdl:service name="WeatherWS">
-<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-<a href="http://www.webxml.com.cn/" target="_blank">WebXml.com.cn</a> <strong>2400¶à¸ö³ÇÊĞÌìÆøÔ¤±¨Web·şÎñ</strong>£¬°üº¬2300¸öÒÔÉÏÖĞ¹ú³ÇÊĞºÍ100¸öÒÔÉÏ¹úÍâ³ÇÊĞÌìÆøÔ¤±¨Êı¾İ¡£Êı¾İÃ¿2.5Ğ¡Ê±×óÓÒ×Ô¶¯¸üĞÂÒ»´Î£¬×¼È·¿É¿¿¡£<br />Ê¹ÓÃ±¾Õ¾ WEB ·şÎñÇë×¢Ã÷»òÁ´½Ó±¾Õ¾£º<a href="http://www.webxml.com.cn/" target="_blank">http://www.webxml.com.cn/</a> ¸ĞĞ»´ó¼ÒµÄÖ§³Ö£¡<br /><br /><img alt="PDF" title="PDF file" src="http://www.webxml.com.cn/images/icon/pdf.gif" style="vertical-align: middle;" /> <a href="http://www.webxml.com.cn/files/WeatherWsHelp.pdf" target="_blank">½Ó¿Ú°ïÖúÎÄµµ</a> &nbsp;&nbsp;&nbsp; <img alt="ZIP" title="ZIP file" src="http://www.webxml.com.cn/images/icon/zip.gif" style="vertical-align: middle;" /> <a href="http://www.webxml.com.cn/files/about_city.zip">²¿·Ö³ÇÊĞ½éÉÜºÍÆøºò±³¾°</a> &nbsp;&nbsp;&nbsp; <img alt="ZIP" title="ZIP file" src="http://www.webxml.com.cn/images/icon/zip.gif" style="vertical-align: middle;" /> <a href="http://www.webxml.com.cn/files/city_photo.zip">²¿·Ö³ÇÊĞÍ¼Æ¬</a> &nbsp;&nbsp;&nbsp; <img alt="HTML" title="HTML file" src="http://www.webxml.com.cn/images/icon/html.gif" style="vertical-align: middle;" /> <a href="http://www.webxml.com.cn/zh_cn/weather_icon.aspx" target="_blank">ÌìÆøÏÖÏóºÍÍ¼Àı</a><br />&nbsp;
-</wsdl:documentation>
-<wsdl:port name="WeatherWSSoap" binding="tns:WeatherWSSoap">
-<soap:address location="http://ws.webxml.com.cn/WebServices/WeatherWS.asmx"/>
-</wsdl:port>
-<wsdl:port name="WeatherWSSoap12" binding="tns:WeatherWSSoap12">
-<soap12:address location="http://ws.webxml.com.cn/WebServices/WeatherWS.asmx"/>
-</wsdl:port>
-<wsdl:port name="WeatherWSHttpGet" binding="tns:WeatherWSHttpGet">
-<http:address location="http://ws.webxml.com.cn/WebServices/WeatherWS.asmx"/>
-</wsdl:port>
-<wsdl:port name="WeatherWSHttpPost" binding="tns:WeatherWSHttpPost">
-<http:address location="http://ws.webxml.com.cn/WebServices/WeatherWS.asmx"/>
-</wsdl:port>
-</wsdl:service>
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://WebXml.com.cn/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://WebXml.com.cn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;a href="http://www.webxml.com.cn/" target="_blank"&gt;WebXml.com.cn&lt;/a&gt; &lt;strong&gt;2400å¤šä¸ªåŸå¸‚å¤©æ°”é¢„æŠ¥WebæœåŠ¡&lt;/strong&gt;ï¼ŒåŒ…å«2300ä¸ªä»¥ä¸Šä¸­å›½åŸå¸‚å’Œ100ä¸ªä»¥ä¸Šå›½å¤–åŸå¸‚å¤©æ°”é¢„æŠ¥æ•°æ®ã€‚æ•°æ®æ¯2.5å°æ—¶å·¦å³è‡ªåŠ¨æ›´æ–°ä¸€æ¬¡ï¼Œå‡†ç¡®å¯é ã€‚&lt;br /&gt;ä½¿ç”¨æœ¬ç«™ WEB æœåŠ¡è¯·æ³¨æ˜æˆ–é“¾æ¥æœ¬ç«™ï¼š&lt;a href="http://www.webxml.com.cn/" target="_blank"&gt;http://www.webxml.com.cn/&lt;/a&gt; æ„Ÿè°¢å¤§å®¶çš„æ”¯æŒï¼&lt;br /&gt;&lt;br /&gt;&lt;img alt="PDF" title="PDF file" src="http://www.webxml.com.cn/images/icon/pdf.gif" style="vertical-align: middle;" /&gt; &lt;a href="http://www.webxml.com.cn/files/WeatherWsHelp.pdf" target="_blank"&gt;æ¥å£å¸®åŠ©æ–‡æ¡£&lt;/a&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img alt="ZIP" title="ZIP file" src="http://www.webxml.com.cn/images/icon/zip.gif" style="vertical-align: middle;" /&gt; &lt;a href="http://www.webxml.com.cn/files/about_city.zip"&gt;éƒ¨åˆ†åŸå¸‚ä»‹ç»å’Œæ°”å€™èƒŒæ™¯&lt;/a&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img alt="ZIP" title="ZIP file" src="http://www.webxml.com.cn/images/icon/zip.gif" style="vertical-align: middle;" /&gt; &lt;a href="http://www.webxml.com.cn/files/city_photo.zip"&gt;éƒ¨åˆ†åŸå¸‚å›¾ç‰‡&lt;/a&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img alt="HTML" title="HTML file" src="http://www.webxml.com.cn/images/icon/html.gif" style="vertical-align: middle;" /&gt; &lt;a href="http://www.webxml.com.cn/zh_cn/weather_icon.aspx" target="_blank"&gt;å¤©æ°”ç°è±¡å’Œå›¾ä¾‹&lt;/a&gt;&lt;br /&gt;&amp;nbsp;</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://WebXml.com.cn/">
+      <s:element name="getRegionDataset">
+        <s:complexType />
+      </s:element>
+      <s:element name="getRegionDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRegionDatasetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="2" maxOccurs="2"/>         
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRegionProvince">
+        <s:complexType />
+      </s:element>
+      <s:element name="getRegionProvinceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRegionProvinceResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getRegionCountry">
+        <s:complexType />
+      </s:element>
+      <s:element name="getRegionCountryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRegionCountryResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSupportCityDataset">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="theRegionCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSupportCityDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSupportCityDatasetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="2" maxOccurs="2"/> 
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSupportCityString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="theRegionCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSupportCityStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSupportCityStringResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getWeather">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="theCityCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="theUserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getWeatherResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getWeatherResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="2" maxOccurs="2"/>     
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getRegionDatasetSoapIn">
+    <wsdl:part name="parameters" element="tns:getRegionDataset" />
+  </wsdl:message>
+  <wsdl:message name="getRegionDatasetSoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionDatasetResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRegionProvinceSoapIn">
+    <wsdl:part name="parameters" element="tns:getRegionProvince" />
+  </wsdl:message>
+  <wsdl:message name="getRegionProvinceSoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionProvinceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRegionCountrySoapIn">
+    <wsdl:part name="parameters" element="tns:getRegionCountry" />
+  </wsdl:message>
+  <wsdl:message name="getRegionCountrySoapOut">
+    <wsdl:part name="parameters" element="tns:getRegionCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityDatasetSoapIn">
+    <wsdl:part name="parameters" element="tns:getSupportCityDataset" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityDatasetSoapOut">
+    <wsdl:part name="parameters" element="tns:getSupportCityDatasetResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityStringSoapIn">
+    <wsdl:part name="parameters" element="tns:getSupportCityString" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityStringSoapOut">
+    <wsdl:part name="parameters" element="tns:getSupportCityStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="getWeatherSoapIn">
+    <wsdl:part name="parameters" element="tns:getWeather" />
+  </wsdl:message>
+  <wsdl:message name="getWeatherSoapOut">
+    <wsdl:part name="parameters" element="tns:getWeatherResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRegionDatasetHttpGetIn" />
+  <wsdl:message name="getRegionDatasetHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getRegionProvinceHttpGetIn" />
+  <wsdl:message name="getRegionProvinceHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="getRegionCountryHttpGetIn" />
+  <wsdl:message name="getRegionCountryHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityDatasetHttpGetIn">
+    <wsdl:part name="theRegionCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityDatasetHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityStringHttpGetIn">
+    <wsdl:part name="theRegionCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityStringHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="getWeatherHttpGetIn">
+    <wsdl:part name="theCityCode" type="s:string" />
+    <wsdl:part name="theUserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getWeatherHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="getRegionDatasetHttpPostIn" />
+  <wsdl:message name="getRegionDatasetHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getRegionProvinceHttpPostIn" />
+  <wsdl:message name="getRegionProvinceHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="getRegionCountryHttpPostIn" />
+  <wsdl:message name="getRegionCountryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityDatasetHttpPostIn">
+    <wsdl:part name="theRegionCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityDatasetHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityStringHttpPostIn">
+    <wsdl:part name="theRegionCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSupportCityStringHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="getWeatherHttpPostIn">
+    <wsdl:part name="theCityCode" type="s:string" />
+    <wsdl:part name="theUserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getWeatherHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:portType name="WeatherWSSoap">
+    <wsdl:operation name="getRegionDataset">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—ä¸­å›½çœä»½ã€ç›´è¾–å¸‚ã€åœ°åŒºï¼›å›½å®¶åç§°ï¼ˆå›½å¤–ï¼‰å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šDataSetã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionDatasetSoapIn" />
+      <wsdl:output message="tns:getRegionDatasetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionProvince">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—ä¸­å›½çœä»½ã€ç›´è¾–å¸‚ã€åœ°åŒºå’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionProvinceSoapIn" />
+      <wsdl:output message="tns:getRegionProvinceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionCountry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—å›½å¤–å›½å®¶åç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionCountrySoapIn" />
+      <wsdl:output message="tns:getRegionCountrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityDataset">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—æ”¯æŒçš„åŸå¸‚/åœ°åŒºåç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼štheRegionCode = çœå¸‚ã€å›½å®¶IDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šDataSetã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getSupportCityDatasetSoapIn" />
+      <wsdl:output message="tns:getSupportCityDatasetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—æ”¯æŒçš„åŸå¸‚/åœ°åŒºåç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼štheRegionCode = çœå¸‚ã€å›½å®¶IDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getSupportCityStringSoapIn" />
+      <wsdl:output message="tns:getSupportCityStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWeather">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—å¤©æ°”é¢„æŠ¥æ•°æ®&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šåŸå¸‚/åœ°åŒºIDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getWeatherSoapIn" />
+      <wsdl:output message="tns:getWeatherSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WeatherWSHttpGet">
+    <wsdl:operation name="getRegionDataset">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—ä¸­å›½çœä»½ã€ç›´è¾–å¸‚ã€åœ°åŒºï¼›å›½å®¶åç§°ï¼ˆå›½å¤–ï¼‰å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šDataSetã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionDatasetHttpGetIn" />
+      <wsdl:output message="tns:getRegionDatasetHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionProvince">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—ä¸­å›½çœä»½ã€ç›´è¾–å¸‚ã€åœ°åŒºå’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionProvinceHttpGetIn" />
+      <wsdl:output message="tns:getRegionProvinceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionCountry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—å›½å¤–å›½å®¶åç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionCountryHttpGetIn" />
+      <wsdl:output message="tns:getRegionCountryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityDataset">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—æ”¯æŒçš„åŸå¸‚/åœ°åŒºåç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼štheRegionCode = çœå¸‚ã€å›½å®¶IDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šDataSetã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getSupportCityDatasetHttpGetIn" />
+      <wsdl:output message="tns:getSupportCityDatasetHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—æ”¯æŒçš„åŸå¸‚/åœ°åŒºåç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼štheRegionCode = çœå¸‚ã€å›½å®¶IDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getSupportCityStringHttpGetIn" />
+      <wsdl:output message="tns:getSupportCityStringHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWeather">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—å¤©æ°”é¢„æŠ¥æ•°æ®&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šåŸå¸‚/åœ°åŒºIDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getWeatherHttpGetIn" />
+      <wsdl:output message="tns:getWeatherHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WeatherWSHttpPost">
+    <wsdl:operation name="getRegionDataset">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—ä¸­å›½çœä»½ã€ç›´è¾–å¸‚ã€åœ°åŒºï¼›å›½å®¶åç§°ï¼ˆå›½å¤–ï¼‰å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šDataSetã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionDatasetHttpPostIn" />
+      <wsdl:output message="tns:getRegionDatasetHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionProvince">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—ä¸­å›½çœä»½ã€ç›´è¾–å¸‚ã€åœ°åŒºå’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionProvinceHttpPostIn" />
+      <wsdl:output message="tns:getRegionProvinceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRegionCountry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—å›½å¤–å›½å®¶åç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šæ— ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getRegionCountryHttpPostIn" />
+      <wsdl:output message="tns:getRegionCountryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityDataset">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—æ”¯æŒçš„åŸå¸‚/åœ°åŒºåç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼štheRegionCode = çœå¸‚ã€å›½å®¶IDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šDataSetã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getSupportCityDatasetHttpPostIn" />
+      <wsdl:output message="tns:getSupportCityDatasetHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—æ”¯æŒçš„åŸå¸‚/åœ°åŒºåç§°å’Œä¸ä¹‹å¯¹åº”çš„ID&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼štheRegionCode = çœå¸‚ã€å›½å®¶IDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getSupportCityStringHttpPostIn" />
+      <wsdl:output message="tns:getSupportCityStringHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWeather">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;br /&gt;&lt;h3&gt;è·å¾—å¤©æ°”é¢„æŠ¥æ•°æ®&lt;/h3&gt;&lt;p&gt;è¾“å…¥å‚æ•°ï¼šåŸå¸‚/åœ°åŒºIDæˆ–åç§°ï¼Œè¿”å›æ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ã€‚&lt;/p&gt;&lt;br /&gt;</wsdl:documentation>
+      <wsdl:input message="tns:getWeatherHttpPostIn" />
+      <wsdl:output message="tns:getWeatherHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WeatherWSSoap" type="tns:WeatherWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getRegionDataset">
+      <soap:operation soapAction="http://WebXml.com.cn/getRegionDataset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionProvince">
+      <soap:operation soapAction="http://WebXml.com.cn/getRegionProvince" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionCountry">
+      <soap:operation soapAction="http://WebXml.com.cn/getRegionCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityDataset">
+      <soap:operation soapAction="http://WebXml.com.cn/getSupportCityDataset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityString">
+      <soap:operation soapAction="http://WebXml.com.cn/getSupportCityString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWeather">
+      <soap:operation soapAction="http://WebXml.com.cn/getWeather" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WeatherWSSoap12" type="tns:WeatherWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getRegionDataset">
+      <soap12:operation soapAction="http://WebXml.com.cn/getRegionDataset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionProvince">
+      <soap12:operation soapAction="http://WebXml.com.cn/getRegionProvince" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionCountry">
+      <soap12:operation soapAction="http://WebXml.com.cn/getRegionCountry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityDataset">
+      <soap12:operation soapAction="http://WebXml.com.cn/getSupportCityDataset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityString">
+      <soap12:operation soapAction="http://WebXml.com.cn/getSupportCityString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWeather">
+      <soap12:operation soapAction="http://WebXml.com.cn/getWeather" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WeatherWSHttpGet" type="tns:WeatherWSHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getRegionDataset">
+      <http:operation location="/getRegionDataset" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionProvince">
+      <http:operation location="/getRegionProvince" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionCountry">
+      <http:operation location="/getRegionCountry" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityDataset">
+      <http:operation location="/getSupportCityDataset" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityString">
+      <http:operation location="/getSupportCityString" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWeather">
+      <http:operation location="/getWeather" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WeatherWSHttpPost" type="tns:WeatherWSHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getRegionDataset">
+      <http:operation location="/getRegionDataset" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionProvince">
+      <http:operation location="/getRegionProvince" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRegionCountry">
+      <http:operation location="/getRegionCountry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityDataset">
+      <http:operation location="/getSupportCityDataset" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupportCityString">
+      <http:operation location="/getSupportCityString" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWeather">
+      <http:operation location="/getWeather" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WeatherWS">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;a href="http://www.webxml.com.cn/" target="_blank"&gt;WebXml.com.cn&lt;/a&gt; &lt;strong&gt;2400å¤šä¸ªåŸå¸‚å¤©æ°”é¢„æŠ¥WebæœåŠ¡&lt;/strong&gt;ï¼ŒåŒ…å«2300ä¸ªä»¥ä¸Šä¸­å›½åŸå¸‚å’Œ100ä¸ªä»¥ä¸Šå›½å¤–åŸå¸‚å¤©æ°”é¢„æŠ¥æ•°æ®ã€‚æ•°æ®æ¯2.5å°æ—¶å·¦å³è‡ªåŠ¨æ›´æ–°ä¸€æ¬¡ï¼Œå‡†ç¡®å¯é ã€‚&lt;br /&gt;ä½¿ç”¨æœ¬ç«™ WEB æœåŠ¡è¯·æ³¨æ˜æˆ–é“¾æ¥æœ¬ç«™ï¼š&lt;a href="http://www.webxml.com.cn/" target="_blank"&gt;http://www.webxml.com.cn/&lt;/a&gt; æ„Ÿè°¢å¤§å®¶çš„æ”¯æŒï¼&lt;br /&gt;&lt;br /&gt;&lt;img alt="PDF" title="PDF file" src="http://www.webxml.com.cn/images/icon/pdf.gif" style="vertical-align: middle;" /&gt; &lt;a href="http://www.webxml.com.cn/files/WeatherWsHelp.pdf" target="_blank"&gt;æ¥å£å¸®åŠ©æ–‡æ¡£&lt;/a&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img alt="ZIP" title="ZIP file" src="http://www.webxml.com.cn/images/icon/zip.gif" style="vertical-align: middle;" /&gt; &lt;a href="http://www.webxml.com.cn/files/about_city.zip"&gt;éƒ¨åˆ†åŸå¸‚ä»‹ç»å’Œæ°”å€™èƒŒæ™¯&lt;/a&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img alt="ZIP" title="ZIP file" src="http://www.webxml.com.cn/images/icon/zip.gif" style="vertical-align: middle;" /&gt; &lt;a href="http://www.webxml.com.cn/files/city_photo.zip"&gt;éƒ¨åˆ†åŸå¸‚å›¾ç‰‡&lt;/a&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img alt="HTML" title="HTML file" src="http://www.webxml.com.cn/images/icon/html.gif" style="vertical-align: middle;" /&gt; &lt;a href="http://www.webxml.com.cn/zh_cn/weather_icon.aspx" target="_blank"&gt;å¤©æ°”ç°è±¡å’Œå›¾ä¾‹&lt;/a&gt;&lt;br /&gt;&amp;nbsp;</wsdl:documentation>
+    <wsdl:port name="WeatherWSSoap" binding="tns:WeatherWSSoap">
+      <soap:address location="http://ws.webxml.com.cn/WebServices/WeatherWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WeatherWSSoap12" binding="tns:WeatherWSSoap12">
+      <soap12:address location="http://ws.webxml.com.cn/WebServices/WeatherWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WeatherWSHttpGet" binding="tns:WeatherWSHttpGet">
+      <http:address location="http://ws.webxml.com.cn/WebServices/WeatherWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WeatherWSHttpPost" binding="tns:WeatherWSHttpPost">
+      <http:address location="http://ws.webxml.com.cn/WebServices/WeatherWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
 </wsdl:definitions>
