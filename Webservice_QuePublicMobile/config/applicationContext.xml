@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+				            http://www.springframework.org/schema/beans/spring-beans.xsd
+				            http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+				            http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
+	<!-- 自服务手机号服务发布 -->
+	<jaxws:server address="/mobile"
+		serviceClass="cn.supreme.ws.selfmobile.service.MobileInterface">
+		<jaxws:serviceBean>
+			<ref bean="selfMobileWs" />
+		</jaxws:serviceBean>
+	</jaxws:server>
+
+	<!--自服务手机号查询bean -->
+	<bean id="selfMobileWs" class="cn.supreme.ws.selfmobile.service.MobileInterfaceImpl">
+		<property name="mobileCodeWs" ref="publicMobileClient"></property>
+	</bean>
+
+	<!--获取公网电话查询服务 -->
+	<jaxws:client id="publicMobileClient"
+		address="http://ws.webxml.com.cn/WebServices/MobileCodeWS.asmx"
+		serviceClass="cn.supreme.ws.publicmobile.service.MobileCodeWSSoap" />
+
+</beans>
