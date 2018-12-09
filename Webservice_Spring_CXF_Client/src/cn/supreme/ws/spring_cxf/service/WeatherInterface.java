@@ -1,4 +1,4 @@
-package cn.supreme.ws.spring_cxf.client;
+package cn.supreme.ws.spring_cxf.service;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

@@ -3,6 +3,8 @@ package cn.supreme.ws.spring_cxf.client;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.supreme.ws.spring_cxf.service.WeatherInterface;
+
 /**
  * @content cxf客户端
  * @author donghao

@@ -1,5 +1,5 @@
 
-package cn.supreme.ws.spring_cxf.client;
+package cn.supreme.ws.spring_cxf.service;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
